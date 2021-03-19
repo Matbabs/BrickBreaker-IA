@@ -22,9 +22,9 @@ def play(model, env, games, ram_obs, rendering = True, printer = True, darwin = 
             if rendering: env.render()
             if done or (darwin and info['ale.lives'] == 4): break
         env.reset()
-        if printer: print(f"--> Game: {game}/{games}, Score: {score} ")
+        if printer: print(f"--> Game: {game+1}/{games}, Score: {score} ")
         scores.append(score)
     env.close()
     scores_mean = mean(scores)
-    if printer: print(f"Games scores mean: {scores_mean}")
+    if printer: print(f"--> Games scores mean: {scores_mean}")
     return scores_mean

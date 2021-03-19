@@ -31,7 +31,7 @@ def get_train_data(env, games, score_requirement, ram_obs):
                 values.append(mem[0])
                 targets.append(prev_action)
         env.reset()
-    print(f"Data: {len(values)}")
+    print(f"--> Data: {len(values)}")
     np_values = np.array(values)
     np_targets = np.array(targets)
     return np_values, np_targets

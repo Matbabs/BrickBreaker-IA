@@ -1,5 +1,6 @@
 import tensorflow as tf
 import random
+from darwin import GeneticAdmixture 
 
 class NeuralNetwork():
     def __init__(self, path=None):
@@ -26,10 +27,18 @@ class NeuralNetwork():
     def load(self, path):
         self.model = tf.keras.models.load_model(path)
 
-    def randomize_weights(self, magnitude):
-        for layer in range(2,7):
+    def genetic_weights_admixture(self, mode, propability, magnitude=None, model=None):
+        for layer in range(2, len(self.model.layers)):
             new_weights = self.model.layers[layer].get_weights()
             for weights in range(len(new_weights[0])):
                 for weight in range(len(new_weights[0][weights])):
-                    new_weights[0][weights][weight] += random.randrange(-9,9)/magnitude
+                    if random.randrange(0,100) < propability:
+                        if mode == GeneticAdmixture.MUTATION:
+                            new_weights[0][weights][weight] += random.randrange(-9,9)*magnitude
+                        elif mode == GeneticAdmixture.CROSSOVER:
+                           new_weights[0][weights][weight] = model.layers[layer].get_weights()[0][weights][weight]
             self.model.layers[layer].set_weights(new_weights)
+
+    def copy_dna_weights(self, model):
+        for layer in range(2, len(self.model.layers)):
+            self.model.layers[layer].set_weights(model.layers[layer].get_weights())

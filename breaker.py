@@ -13,15 +13,18 @@ RAM_OBS = [RAM_Y_BALL, RAM_X_BALL, RAM_X_AGENT]
 
 # TRAIN
 TRAIN_GAMES = 100
-SCORE_REQUIREMENTS = 80
+SCORE_REQUIREMENTS = 100
 
 # PLAY
 PLAY_GAMES = 5
 
 # DARWIN
-MODELS = 5
-CREATE_GENERATIONS = 5
+POPULATION = 6
+CREATE_GENERATIONS = 10
 PLAY_GAMES_GEN = 1
+MUTATE_MAGNITUDE = 1e-07
+MUTATE_PROBABILITY = 5
+CROSSOVER_PROBABILITY = 5
 
 if __name__ == "__main__":
     if len(sys.argv) >= 3:
@@ -34,11 +37,6 @@ if __name__ == "__main__":
             model.load(sys.argv[2])
             player.play(model, ENV, PLAY_GAMES, RAM_OBS)
         elif sys.argv[1] == "darwin":
-            models = []
-            for _ in range(MODELS):
-                model = nn.NeuralNetwork()
-                model.load(sys.argv[2])
-                models.append(model)
-            darwin.natural_selection(models, ENV, CREATE_GENERATIONS, PLAY_GAMES_GEN, RAM_OBS)
+            darwin.natural_selection(POPULATION, sys.argv[2], ENV, CREATE_GENERATIONS, PLAY_GAMES_GEN, RAM_OBS, MUTATE_MAGNITUDE, MUTATE_PROBABILITY, CROSSOVER_PROBABILITY)
     else:
         print("[USAGE] python3 breaker.py <train|play> <model>")
