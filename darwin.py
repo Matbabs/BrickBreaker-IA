@@ -39,7 +39,6 @@ def natural_selection(population, path, env, generations, games, ram_obs, mutate
             models_scores_mean[other] = 0
             model = models[other]
             model.copy_dna_weights(new_models[two_next].model)
-            model.copy_dna_bias(new_models[two_next].model)
             model.genetic_weights_admixture(GeneticAdmixture.CROSSOVER, crossover_prob, model = new_models[1 if two_next == 0 else 0].model)
             new_models.append(model)
         # REPRODUCE BEST

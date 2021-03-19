@@ -16,7 +16,7 @@ class NeuralNetwork():
         self.model.compile(optimizer='adam', loss=tf.keras.losses.categorical_crossentropy, metrics=['accuracy'])
 
     def train(self, values, targets):
-        self.model.fit(values, targets, epochs=5)
+        self.model.fit(values, targets, epochs=10)
 
     def predict(self, values):
         return self.model.predict(values)
