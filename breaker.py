@@ -16,15 +16,15 @@ TRAIN_GAMES = 200
 SCORE_REQUIREMENTS = 100
 
 # PLAY
-PLAY_GAMES = 5
+PLAY_GAMES = 50
 
 # DARWIN
 POPULATION = 6
-CREATE_GENERATIONS = 10
-PLAY_GAMES_GEN = 1
-MUTATE_MAGNITUDE = 1e-07
-MUTATE_PROBABILITY = 5
-CROSSOVER_PROBABILITY = 5
+CREATE_GENERATIONS = 20
+PLAY_GAMES_GEN = 2
+MUTATE_MAGNITUDE = 1e-06
+MUTATE_PROBABILITY = 3
+CROSSOVER_PROBABILITY = 3
 
 if __name__ == "__main__":
     if len(sys.argv) >= 3:
@@ -35,7 +35,7 @@ if __name__ == "__main__":
             model.save(sys.argv[2])
         elif sys.argv[1] == "play":
             model.load(sys.argv[2])
-            player.play(model, ENV, PLAY_GAMES, RAM_OBS)
+            player.play(model, ENV, PLAY_GAMES, RAM_OBS, False)
         elif sys.argv[1] == "darwin":
             darwin.natural_selection(POPULATION, sys.argv[2], ENV, CREATE_GENERATIONS, PLAY_GAMES_GEN, RAM_OBS, MUTATE_MAGNITUDE, MUTATE_PROBABILITY, CROSSOVER_PROBABILITY)
     else:
