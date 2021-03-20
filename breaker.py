@@ -39,4 +39,4 @@ if __name__ == "__main__":
         elif sys.argv[1] == "darwin":
             darwin.natural_selection(POPULATION, sys.argv[2], ENV, CREATE_GENERATIONS, PLAY_GAMES_GEN, RAM_OBS, MUTATE_MAGNITUDE, MUTATE_PROBABILITY, CROSSOVER_PROBABILITY)
     else:
-        print("[USAGE] python3 breaker.py <train|play> <model>")
+        print("[USAGE] python3 breaker.py <train|play|darwin> <model>")

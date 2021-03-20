@@ -9,15 +9,15 @@ Matisse BABONNEAU
 ![](https://img.shields.io/static/v1.svg?label=Machine&message=Learning&color=68b369)
 ![](https://img.shields.io/static/v1.svg?label=Deep&message=Learning&color=6066d5)
 
-> The objective of this project is to learn artificial intelligence programming. It is therefore a project of discovery and theoretical approach of the subject. All the solutions presented here are the result of personal choices and do not necessarily correspond to the most efficient choices. 
+> The objective of this project is to learn artificial intelligence programming with genetic algorithm. It is therefore a project of discovery and theoretical approach of the subject. All the solutions presented here are the result of personal choices and do not necessarily correspond to the most efficient choices. 
 
 ## Contents
 
-* [Neural Network](#neural-network)
-* [Genetic Algorithm](#genetic-algorithm)
-* [Results](#results)
+* [Train a neural network](#train-a-neural-network)
+* [Optimization of the neural network using a genetic algorithm](#optimization-of-the-neural-network-using-a-genetic-algorithm)
+* [Results of the optimization](#results-of-the-optimization)
 
-# Neural Network
+# Train a neural network
 
 The first phase of the project is the creation of a neural network. Indeed, the final objective is to combine a NN and a genetic algorithm. 
 
@@ -47,9 +47,33 @@ self.model.compile(optimizer='adam', loss=tf.keras.losses.categorical_crossentro
 
 Note that this neural network is a Q-Network. It could be used in a DQN with a Q-learning algorithm. However it is not the method used here. [Tensorflow DQN article.](https://www.tensorflow.org/agents/tutorials/0_intro_rl)
 
+```
+_________________________________________________________________
+Layer (type)                 Output Shape              Param #   
+=================================================================
+flatten (Flatten)            (None, 3)                 0         
+_________________________________________________________________
+dense (Dense)                (None, 128)               512       
+_________________________________________________________________
+dense_1 (Dense)              (None, 256)               33024     
+_________________________________________________________________
+dense_2 (Dense)              (None, 512)               131584    
+_________________________________________________________________
+dense_3 (Dense)              (None, 256)               131328    
+_________________________________________________________________
+dense_4 (Dense)              (None, 128)               32896     
+_________________________________________________________________
+dense_5 (Dense)              (None, 4)                 516       
+=================================================================
+Total params: 329,860
+Trainable params: 329,860
+Non-trainable params: 0
+_________________________________________________________________
+```
+
 The model can be trained using a simple reinforcement learning strategy, notably by observing the scores produced during training. The model once trained can be able to play. However, the aim is to use a genetic algorithm to improve the weights and biases of the neural network.
 
-# Genetic Algorithm
+# Optimization of the neural network using a genetic algorithm
 
 Neural Networks coupled with Genetic Algorithms can really accelerate the learning process to solve a certain problem. 
 
@@ -138,6 +162,6 @@ def natural_selection(population, path, env, generations, games, ram_obs, mutate
         models = new_models
 ```
 
-# Results
+# Results of the optimization
 
 ![](./assets/50games.png)
