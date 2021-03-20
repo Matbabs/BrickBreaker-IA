@@ -15,6 +15,7 @@ Matisse BABONNEAU
 
 * [Neural Network](#neural-network)
 * [Genetic Algorithm](#genetic-algorithm)
+* [Results](#results)
 
 # Neural Network
 
@@ -136,3 +137,7 @@ def natural_selection(population, path, env, generations, games, ram_obs, mutate
         # SAVE NEW POPULATION
         models = new_models
 ```
+
+# Results
+
+![](./assets/50games.png)

@@ -8,14 +8,15 @@ def play(model, env, games, ram_obs, rendering = True, printer = True, darwin = 
     scores = []
     for game in range(games):
         observation = env.reset()
-        action_total = 0
         env.step(1)
         score = 0
+        ball_y = None; prev_ball_y = None
         while True:
             action = np.argmax(model.predict(np.array([[observation[i] for i in ram_obs]])))
-            if action_total > 0 and action_total % 200 == 0: action = 1; action_total = 0
             observation, reward , done, info = env.step(action)
-            action_total += 1
+            ball_y = observation[ram_obs[0]]
+            if ball_y == 0 and prev_ball_y == ball_y: env.step(1)
+            prev_ball_y = ball_y
             score += reward
             if rendering: env.render()
             if done or (darwin and info['ale.lives'] == 4): break
