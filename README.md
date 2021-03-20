@@ -11,6 +11,8 @@ Matisse BABONNEAU
 
 > The objective of this project is to learn artificial intelligence programming with genetic algorithm. It is therefore a project of discovery and theoretical approach of the subject. All the solutions presented here are the result of personal choices and do not necessarily correspond to the most efficient choices. 
 
+![brickbreaker](https://user-images.githubusercontent.com/32793760/111870562-c09b7000-8985-11eb-9ec2-2378a2a35250.gif)
+
 ## Contents
 
 * [Train a neural network](#train-a-neural-network)
