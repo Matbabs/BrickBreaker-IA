@@ -1,6 +1,7 @@
 import tensorflow as tf
 import random
 from darwin import GeneticAdmixture 
+import matplotlib.pyplot as plt
 
 class NeuralNetwork():
     def __init__(self, path=None):
@@ -16,7 +17,12 @@ class NeuralNetwork():
         self.model.compile(optimizer='adam', loss=tf.keras.losses.categorical_crossentropy, metrics=['accuracy'])
 
     def train(self, values, targets):
-        self.model.fit(values, targets, epochs=10)
+        training = self.model.fit(values, targets, epochs=10)
+        plt.plot(training.history['accuracy'], label='accuracy')
+        plt.xlabel('Epoch')
+        plt.ylabel('Accuracy')
+        plt.legend(loc='lower right')
+        plt.show()
 
     def predict(self, values):
         return self.model.predict(values)

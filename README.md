@@ -75,6 +75,8 @@ _________________________________________________________________
 
 The model can be trained using a simple reinforcement learning strategy, notably by observing the scores produced during training. The model once trained can be able to play. However, the aim is to use a genetic algorithm to improve the weights and biases of the neural network.
 
+![](./assets/train.png)
+
 # Optimization of the neural network using a genetic algorithm
 
 Neural Networks coupled with Genetic Algorithms can really accelerate the learning process to solve a certain problem. 
