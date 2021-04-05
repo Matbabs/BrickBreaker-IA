@@ -23,7 +23,7 @@ Matisse BABONNEAU
 
 The first phase of the project is the creation of a neural network. Indeed, the final objective is to combine a NN and a genetic algorithm. 
 
-The neural network was therefore developed according to the following model.
+The neural network was therefore developed according to the following model. [Designed with NN-SVG (alexlenail)](http://alexlenail.me/NN-SVG/index.html)
 
 ![Neural Network](./assets/nn.svg)
 

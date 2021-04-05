@@ -42,7 +42,7 @@ class NeuralNetwork():
                         if mode == GeneticAdmixture.MUTATION:
                             new_weights[0][weights][weight] += random.randrange(-9,9)*magnitude
                         elif mode == GeneticAdmixture.CROSSOVER:
-                           new_weights[0][weights][weight] = model.layers[layer].get_weights()[0][weights][weight]
+                            new_weights[0][weights][weight] = model.layers[layer].get_weights()[0][weights][weight]
             self.model.layers[layer].set_weights(new_weights)
 
     def copy_dna_weights(self, model):
